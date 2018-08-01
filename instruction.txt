@@ -1,0 +1,8 @@
+1. npm init -y
+2. npm install --save-dev webdriverio
+3. npm install -g selenium-standalone
+4. selenium-standalone install
+5. selenium-standalone start
+
+npm istall --global --production windows-build-tools
+npm install wdio-jasmine-framework --save-dev        or    npm install wdio-mocha-framework --save-dev
