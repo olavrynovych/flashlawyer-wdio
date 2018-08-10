@@ -159,7 +159,7 @@ exports.config = {
                 return;
             }
     
-            browser.saveScreenshot('assertionError_' + assertion.error.message + '.png');
+            browser.saveScreenshot('./errorShots/assertionError_' + assertion.error.message + '.png');
         }
     },
     
@@ -259,6 +259,14 @@ exports.config = {
      */
      after: function (result, capabilities, specs) {
         console.log('TESTS FINISHED..');
+        var allure = require('allure-commandline');
+ 
+        // returns ChildProcess instance
+        var generation = allure(['generate', 'allure-results']);
+ 
+        generation.on('exit', function(exitCode) {
+            console.log('Generation is finished with code:', exitCode);
+        });
      },
     /**
      * Gets executed right after terminating the webdriver session.

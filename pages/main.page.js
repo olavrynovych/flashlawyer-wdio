@@ -1,5 +1,5 @@
 let Page =require('./page');
-let ToobarElement =require('./controls/toolbar.element');
+let ToobarElement =require('../controls/toolbar.element');
 
 class MainPage extends Page{
     constructor(){

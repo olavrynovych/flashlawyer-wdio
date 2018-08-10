@@ -1,8 +1,9 @@
 class ToobarElement{
     constructor(){
     }
+    //Main section
     get howItWorksLink() {
-            return browser.element('a[aria-label="How it Works"]');
+        return browser.element('a[aria-label="How it Works"]');
     }
     get createDocumentsLink(){
         return browser.element('//span[text()="create documents"]//parent::li/a');
@@ -17,11 +18,29 @@ class ToobarElement{
         return browser.element('//span[text()="live_help"]//parent::li/a');
     }
 
+    //Right slide section
+    get closeRightMenuArrow(){
+        return browser.element('//aside[@class="menu slideInLeft"]//i[text()="keyboard_arrow_left"]/parent::a');
+    }
+    get searchField(){
+        return browser.element('//aside[@class="menu slideInLeft"]//input[@placeholder="search"]');
+    }
+    
+
+    typeToSearchField(value){
+        this.searchField.setValue(value);
+    }
+    clickOnLink(docName){
+        let elementSelector = `//aside[@class="menu slideInLeft"]//ul[@class="menu-list"]//a[text()='${docName}']`;
+        browser.waitForVisible(elementSelector,3000);
+        browser.element(elementSelector).click();
+    }
+
     navigateToMainPage(){
         this.howItWorksLink.click();
         console.log('Click on "Main Page" button.');
     }
-    navigateToCreateDocuments(){
+    openCreateDocumentsMenu(){
         this.createDocumentsLink.click();
         console.log('Click on "Create Documents" button.');
     }
