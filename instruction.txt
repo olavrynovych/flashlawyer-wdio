@@ -6,3 +6,5 @@
 
 npm istall --global --production windows-build-tools
 npm install wdio-jasmine-framework --save-dev        or    npm install wdio-mocha-framework --save-dev
+
+npm install -g allure-commandline --save-dev

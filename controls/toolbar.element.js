@@ -1,3 +1,5 @@
+let log = console.log;
+
 class ToobarElement{
     constructor(){
     }
@@ -6,7 +8,9 @@ class ToobarElement{
         return browser.element('a[aria-label="How it Works"]');
     }
     get createDocumentsLink(){
-        return browser.element('//span[text()="create documents"]//parent::li/a');
+        let selector = '//span[text()="create documents"]//parent::li/a';
+        browser.waitForVisible(selector,3000);
+        return browser.element(selector);
     }
     get myDocumentsLink(){
         return browser.element('//span[text()="my documents"]//parent::li/a');
@@ -30,31 +34,33 @@ class ToobarElement{
     typeToSearchField(value){
         this.searchField.setValue(value);
     }
-    clickOnLink(docName){
+    clickOnDocumentLink(docName){
         let elementSelector = `//aside[@class="menu slideInLeft"]//ul[@class="menu-list"]//a[text()='${docName}']`;
         browser.waitForVisible(elementSelector,3000);
+        browser.waitForEnabled(elementSelector,3000);
         browser.element(elementSelector).click();
+        log(`Click on '${docName}' link.`);
     }
 
     navigateToMainPage(){
         this.howItWorksLink.click();
-        console.log('Click on "Main Page" button.');
+        log('Click on "Main Page" button.');
     }
     openCreateDocumentsMenu(){
         this.createDocumentsLink.click();
-        console.log('Click on "Create Documents" button.');
+        log('Click on "Create Documents" button.');
     }
     navigateToMyDocuments(){
         this.myDocumentsLink.click();
-        console.log('Click on "My Documents" button.');
+        log('Click on "My Documents" button.');
     }
     navigateToMyProfile(){
         this.myProfileLink.click();
-        console.log('Click on "My Profile" button.');
+        log('Click on "My Profile" button.');
     }
     navigateToHelp(){
         this.helpLink.click();
-        console.log('Click on "Help" button.');
+        log('Click on "Help" button.');
     }
 }
 module.exports = ToobarElement;
