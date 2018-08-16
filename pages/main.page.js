@@ -9,17 +9,6 @@ class MainPage extends Page{
     open(){
          super.open('https://flashlawyer.com/');
     }
-
-    // navigateToHowItWorks(){
-    //     this.click();
-    // }
-    // //open toolbar
-    // navigateToCreateDocuments(){
-    //     this.createDocumentsLink.click();
-    // }
-    // navigateToMyDocuments(){
-    //     this.myDocumentsLink.click();
-    // }
 }
 
 module.exports = new MainPage();

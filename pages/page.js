@@ -1,3 +1,4 @@
+let log = console.log;
 class Page{
     constructor(){
         this.title='My Page';
@@ -5,7 +6,7 @@ class Page{
 
     open(path){
         browser.url(path);
-        console.log(`Navigate to path:"${path}".`);
+        log(`Navigate to path:"${path}".`);
     }
 }
 module.exports = Page;
